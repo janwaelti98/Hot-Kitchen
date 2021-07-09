@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="rating" th:fragment="ratingAverage(title, value)">
+    <p class="text-end pt-2 fw-bold" th:text="${title} + ${value == -1 ? 'no ratings yet' : value}"></p>
+</div>
+
+<div class="stars" th:fragment="giveRating(recipeId)">
+    <form id="ratingForm" th:action="@{'/recipe/' + ${recipeId} + '/addRating'}" method="post">
+        <input class="star star-5" id="star-5" value="5" type="radio" name="star"
+               th:checked="${loggedInUserRating == 5 ? true : false}" onclick="submitForm()"/> <label
+            class="star star-5" for="star-5" title="Give 5-star-rating"><i data-feather="star"></i></label>
+        <input class="star star-4" id="star-4" value="4" type="radio" name="star"
+               th:checked="${loggedInUserRating == 4 ? true : false}" onclick="submitForm()"/> <label
+            class="star star-4" for="star-4" title="Give 4-star-rating"><i data-feather="star"></i></label>
+        <input class="star star-3" id="star-3" value="3" type="radio" name="star"
+               th:checked="${loggedInUserRating == 3 ? true : false}" onclick="submitForm()"/> <label
+            class="star star-3" for="star-3" title="Give 3-star-rating"><i data-feather="star"></i></label>
+        <input class="star star-2" id="star-2" value="2" type="radio" name="star"
+               th:checked="${loggedInUserRating == 2 ? true : false}" onclick="submitForm()"/> <label
+            class="star star-2" for="star-2" title="Give 2-star-rating"><i data-feather="star"></i></label>
+        <input class="star star-1" id="star-1" value="1" type="radio" name="star"
+               th:checked="${loggedInUserRating == 1 ? true : false}" onclick="submitForm()"/> <label
+            class="star star-1" for="star-1" title="Give 1-star-rating"><i data-feather="star"></i></label>
+    </form>
+</div>
+</html>

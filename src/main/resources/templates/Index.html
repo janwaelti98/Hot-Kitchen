@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/page::html(~{::title},~{::main})">
+<title>Welcome to HotKitchen</title>
+<main>
+    <h2 class="siteTitle">Welcome to HotKitchen!</h2>
+    <div class="container g-0">
+        <div class="row mb-5">
+            <p class="col-sm-12 col-lg-12 col-xl-12">This is HotKitchen. The place to be if you want to dive into the
+                culinary universe. Browse our news articles to learn about cooking techniques, happenings in the
+                culinary world and to meet restaurant owners and chefs.
+                Visit the recipes to try your own hand at the delicious foods you see on our website. We're happy to
+                have you, now let's get cooking!</p>
+        </div>
+        <div class="row">
+            <div class="recipeThumbnail col-sm-12 col-lg-6 col-xl-6">
+                <div th:replace="fragments/index/Thumbnail::Card(News, 'Find out about the newest trends in food and get tips for the best restaurants around. Every week there are loads of new articles to keep you on top of all things culinary. Perfect stories to accompany you when you devour your homemade treats.', 'newsImage.jpg', '/news')">
+                </div>
+            </div>
+            <div class="recipeThumbnail col-sm-12 col-lg-6 col-xl-6">
+                <div th:replace="fragments/index/Thumbnail::Card(Recipes, 'Browse recipes we know you will love! Our recipes are divided into three diet categories and each recipe shows the amount of time needed to make the food. Dive into the world of pastries or grilling or whatever your heart desires. Look out for the weekly pasty-friday recipe!', 'recipesImage.jpg', '/recipe')">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</html>

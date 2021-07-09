@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/page::html(~{::title},~{::main})">
+<title>News</title>
+<main>
+    <h2 class="siteTitle">News</h2>
+    <div class="container g-0">
+        <div class="row" th:if="${news.size() > 0}">
+            <div th:each="article : ${news}" class="newsThumbnail col-sm-12 col-lg-6 col-xl-4">
+                <div th:replace="fragments/news/Thumbnail::Card(${article.title},${article.shortDescription}, ${article.image}, ${article.url})">
+                </div>
+            </div>
+        </div>
+        <div class="row" th:if="${news.size() <= 0}">
+            <div>
+                <b>Error on loading News form API. Please try again in a few minutes.</b><br/><br/>
+                On the free API from NY Times, there are two rate limits: 4,000 requests per day and 10 requests per
+                minute.<br/>
+                You should sleep 6 seconds between calls to avoid hitting the per minute rate limit.
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href=" https://developer.nytimes.com" target="_blank">
+                    <img src="images/poweredby_nytimes_200a.png" alt="Data provided by The New York Times">
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+</html>

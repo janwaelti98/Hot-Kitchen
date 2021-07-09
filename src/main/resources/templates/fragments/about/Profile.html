@@ -1,0 +1,11 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="profile col-sm-12 col-md-6 col-lg-6 col-xl-4" th:fragment="profile(name, description, imageSource)">
+    <div class="card">
+        <img src="" th:src="${imageSource}" class="img-fluid" th:alt="${name}" alt="">
+        <div class="card-body">
+            <h5 th:text="${name}" class="card-title">placeholderTitle</h5>
+            <p th:text="${description}" class="card-text">placeholderText</p>
+        </div>
+    </div>
+</div>
+</html>

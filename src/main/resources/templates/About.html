@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/Page::html(~{::title},~{::main})">
+<title>About HotKitchen</title>
+<main>
+    <h2 class="siteTitle">About</h2>
+    <div class="card">
+        <div class="card-body p-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p style="margin-bottom: 3rem">
+                            HotKitchen is a space for <em>all</em>! Whether you're completely new to cooking or have
+                            years
+                            of
+                            experience.
+                            Hot Kitchen allows you to browse recipes, read interesting and convenient articles or news
+                            about
+                            various
+                            cooking and baking topics and discuss
+                            these things with other members.
+                        </p>
+
+                        <h3>Features</h3>
+                        <p>The following features are implemented:</p>
+
+                        <div class="accordion mb-5">
+                            <h3>Functionalities for non-registered users</h3>
+                            <div>
+                                <p><strong>Viewing</strong> the welcome-, news-, recipes- and about-page as well as each recipe and its comments. These users can
+                                 register via the header bar to gain all functionalities of registered users of the web application.</p>
+                            </div>
+                            <h3>Functionalities for logged-in users of role "Reader"</h3>
+                            <div>
+                                <p><strong>Viewing</strong> the welcome-, news-, recipes- and about-pages as well as each recipe and its comments. Users can log in via the
+                                    header bar. Logged-in users can <strong>leave comments and ratings on recipes.</strong></p>
+                            </div>
+                            <h3>Functionalities for logged-in users of role "Admin" or "Author"</h3>
+                            <div>
+                                <p><strong>Viewing</strong> the welcome-, news-, recipes- and about-pages as well as each recipe and its comments. Users can log in via the
+                                    header bar. Logged-in users can <strong>leave comments and ratings on recipes.</strong> Admins and Authors can additionally add, edit and
+                                    delete recipes. When editing and adding recipes, they can add or remove ingredients, equipment and preparation steps, as well as change the title, short
+                                    description, times, servings, diet and header image.
+                                   </p>
+                            </div>
+                            <h3>Comment on recipes</h3>
+                            <div>
+                                <p>Every recipe features a discussion section where logged-in users can leave comments and talk to each other.</p>
+                            </div>
+                            <h3>Rate recipes</h3>
+                            <div>
+                                <p>Logged-in users can leave ratings on recipes with a number between 1 and 5. The overall rating of each recipe is displayed
+                                on the recipe page as well.</p>
+                            </div>
+                        </div>
+
+                        <h3>Extensions</h3>
+                        <p>The following extensions have been added to increase your enjoyment:</p>
+
+                        <div class="accordion mb-5">
+                            <h3>Responsive design</h3>
+                            <div>
+                                <p>Responsive design to allow problem free usage on any device.</p>
+                            </div>
+                            <h3>User registration & login</h3>
+                            <div>
+                                <p>User management incl. registration with the roles admin, author and
+                                    reader. The three roles have different authorities and can do different things on the web application. Any user of
+                                the web application can register, login and logout.</p>
+                            </div>
+                            <h3>REST-service</h3>
+                            <div>
+                                <p>Usage of the New York Times REST-Service for the news section.</p>
+                            </div>
+                            <h3>JavaScript effects</h3>
+                            <div>
+                                <p>Dynamic elements with JavaScript: Back-to-top button, tooltips on the rating-stars, dynamic accordion on the about page and
+                                image upload using ajax.</p>
+                            </div>
+                            <h3>File Manager</h3>
+                            <div>
+                                <p>File manager for uploading and downloading files (in our application used for images)</p>
+                            </div>
+                        </div>
+
+                        <h3>Meet the chefs</h3>
+                        <div class="container g-0">
+                            <div class="row">
+                                <div th:replace="fragments/about/Profile::profile('Alison Fersch','Alison is a pastry and dessert lover. She loves to create desserts, whether they be simple or intricately designed. Pro tip: Make sure all ingredients are the correct temperature when baking!','images/alison_round_200x200.png')"></div>
+                                <div th:replace="fragments/about/Profile::profile('Daniel Nüssli','Daniel is an avid experimental cook. Always looking to try out new techniques and methods to create surprising dishes. Pro tip: Be creative!','images/daniel_round_200x200.png')"></div>
+                                <div th:replace="fragments/about/Profile::profile('Jan Wälti','Jan is a passionate food stylist! He can spend hours upon hours making a dish look picture perfect. Pro tip: Put of wooden spoon over the cooking pot to prevent the pasta water from boiling over.','images/jan_round_200x200.png')"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</html>

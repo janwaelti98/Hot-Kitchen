@@ -1,0 +1,412 @@
+[
+  {
+    "_class": "ch.fhnw.webeC.model.User",
+    "username": "Admin",
+    "password": "admin",
+    "roles": "ADMIN",
+    "firstName": "Admin",
+    "lastName": "Admin",
+    "phone": "405-580-6403",
+    "email": "email1@email.com",
+    "address": "Streetweg 66",
+    "country": "CH",
+    "active": true
+  },
+  {
+    "_class": "ch.fhnw.webeC.model.User",
+    "username": "Author",
+    "password": "author",
+    "roles": "AUTHOR",
+    "firstName": "Jan",
+    "lastName": "Wälti",
+    "phone": "405-580-6403",
+    "email": "email2@email.com",
+    "address": "Streetweg 66",
+    "country": "CH",
+    "active": true
+  },
+  {
+    "_class": "ch.fhnw.webeC.model.User",
+    "username": "dnu",
+    "password": "123",
+    "roles": "AUTHOR",
+    "firstName": "Daniel",
+    "lastName": "Nüssli",
+    "phone": "405-580-6403",
+    "email": "email3@email.com",
+    "address": "Streetweg 66",
+    "country": "CH",
+    "active": true
+  },
+  {
+    "_class": "ch.fhnw.webeC.model.User",
+    "username": "HansMuster",
+    "password": "123",
+    "roles": "AUTHOR",
+    "firstName": "Hans",
+    "lastName": "Muster",
+    "phone": "405-580-6403",
+    "email": "email4@email.com",
+    "address": "Streetweg 66",
+    "country": "CH",
+    "active": true
+  },
+  {
+    "_class": "ch.fhnw.webeC.model.User",
+    "username": "Reader",
+    "password": "reader",
+    "roles": "READER",
+    "firstName": "Reader",
+    "lastName": "Reader",
+    "phone": "405-580-6403",
+    "email": "email5@email.com",
+    "address": "Streetweg 66",
+    "country": "CH",
+    "active": true
+  },
+  {
+    "_class": "ch.fhnw.webeC.model.Recipe",
+    "id": 1,
+    "title": "Burger Buns",
+    "shortDescription": "Baker after baker tried these buns and declared them THE BEST. Soft, vaguely sweet, and golden-yellow from the butter and egg, these simple buns are perfect for burgers (whether beef or plant-based), or any of your favorite sandwich fillings.",
+    "image": "/download/sampleRecipe1.jpg",
+    "publishDate": "2020-04-12",
+    "tags": [
+      "as",
+      "df",
+      "es"
+    ],
+    "activeTime": 35,
+    "entireTime": 120,
+    "servings": 6,
+    "diet": "vegetarian",
+    "ingredients": [
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Flour",
+        "amount": 500
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Sugar",
+        "amount": 5
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Butter",
+        "amount": 200
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Active dry yeast",
+        "amount": 5
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Water",
+        "amount": 50
+      }
+    ],
+    "preparation": [
+      "Mix all the ingredients in a glass bowl. Make sure everything is incorporated and knead until a smooth dough forms.",
+      "Let the dough rise at room temperature for 30 minutes, then transfer to the fridge and let rise for a minimum of 4 hours.",
+      "Divide the dough into 6 equal pieces and shape into buns. Let rise for 30 minutes.",
+      "Brush buns with eggwash.",
+      "Preheat the oven to 180 degrees celcius and bake the buns for 20 minutes or until golden brown on top."
+    ],
+    "equipment": [
+      "glass bowl",
+      "oven",
+      "pastry brush"
+    ],
+    "tips": [
+      "1",
+      "2",
+      "3"
+    ],
+    "ratings": [
+      {
+        "_class": "ch.fhnw.webeC.model.Rating",
+        "title": "Rating",
+        "text": "Super",
+        "ratingNumber": 3,
+        "reviewer": {
+          "username": "555",
+          "password": "555"
+        },
+        "reviewDate": "2020-04-12"
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Rating",
+        "title": "Rating",
+        "text": "Naja",
+        "ratingNumber": 4,
+        "reviewer": {
+          "username": "444",
+          "password": "444"
+        },
+        "reviewDate": "2020-11-19"
+      }
+    ],
+    "comments": [
+      {
+        "_class": "ch.fhnw.webeC.model.Comment",
+        "text": "What's the maximum of leaving the dough in the fridge? Is 12 hours too long? Anyone got any tips?",
+        "commenter": {
+          "username": "Joana_S",
+          "password": "b"
+        },
+        "commentDate": "2021-03-21"
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Comment",
+        "text": "I wouldn't leave the dough longer than 10 hours or you risk over-proofing. Buns will still taste great but texture will be off.",
+        "commenter": {
+          "username": "PeterWilliams",
+          "password": "t"
+        },
+        "commentDate": "2021-03-22"
+      }
+    ]
+  },
+  {
+    "_class": "ch.fhnw.webeC.model.Recipe",
+    "id": 2,
+    "title": "Mini Pancakes",
+    "shortDescription": "Mini Pancakes, sometimes called Silver Dollar are the easiest quickest little pancake bites that are perfect for parties, brunches, kids and pancake kabobs!",
+    "image": "/download/sampleRecipe2.jpg",
+    "publishDate": "2020-08-23",
+    "tags": [
+      "as",
+      "df",
+      "es"
+    ],
+    "activeTime": 10,
+    "entireTime": 30,
+    "servings": 3,
+    "diet": "vegan",
+    "ingredients": [
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Flour",
+        "amount": 200
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Sugar",
+        "amount": 50
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Buttermilk",
+        "amount": 100
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Eggs",
+        "amount": 30
+      }
+    ],
+    "preparation": [
+      "Mix all the ingredients in a glass bowl just until all of the flower is incorporated.",
+      "Let the batter rest for a minimum of 5 minutes.",
+      "Preheat a non-stick frying pan with a teaspon of butter at medium heat.",
+      "Dollop batter in even circles of about 10cm into the pan.",
+      "Let the batter cook until the top looks dry and bubbles start to form.",
+      "Flip the mini pancakes and cook for 2 more minutes.",
+      "Serve with mint leaves, mascarpone, powdered sugar and blueberries"
+    ],
+    "equipment": [
+      "glass bowl",
+      "non-stick frying pan",
+      "whisk"
+    ],
+    "tips": [
+      "1",
+      "2",
+      "3"
+    ],
+    "ratings": [
+      {
+        "_class": "ch.fhnw.webeC.model.Rating",
+        "title": "Great!",
+        "text": "Recipe is amazing! Loved it!",
+        "ratingNumber": 5,
+        "reviewer": {
+          "username": "333",
+          "password": "333"
+        },
+        "reviewDate": "2020-04-12"
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Rating",
+        "title": "Passing",
+        "text": "Recipe was alright. Wasn't a lot for 3 people.",
+        "ratingNumber": 3,
+        "reviewer": {
+          "username": "222",
+          "password": "222"
+        },
+        "reviewDate": "2020-11-19"
+      }
+    ],
+    "comments": [
+      {
+        "_class": "ch.fhnw.webeC.model.Comment",
+        "text": "Anyone else always unsure when to flip the pancakes? I never know the right moment! Amazing recipe  though!",
+        "commenter": {
+          "username": "SarahMicheals",
+          "password": "b"
+        },
+        "commentDate": "2020-04-21"
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Comment",
+        "text": "Well, these turned out a lot better than I thought they would. I'll have to make them again for some guests.",
+        "commenter": {
+          "username": "bakingNewbie22",
+          "password": "t"
+        },
+        "commentDate": "2020-06-12"
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Comment",
+        "text": "Such an easy recipe but so delicious, am I right?!",
+        "commenter": {
+          "username": "BonnieT",
+          "password": "t"
+        },
+        "commentDate": "2020-07-06"
+      }
+    ]
+  },
+  {
+    "_class": "ch.fhnw.webeC.model.Recipe",
+    "id": 3,
+    "title": "Potato Pierogi",
+    "shortDescription": "Tender dumplings filled with cheesy potato filling then topped with buttery sautéed onions. The Very Best Potato Pierogi recipe is passed down from my grandfather and made completely from scratch is easier to make than you think.",
+    "image": "/download/cooking-2132874_960_720.jpg",
+    "publishDate": "2020-06-12",
+    "tags": [
+      "fairy",
+      "bunnies",
+      "awesome"
+    ],
+    "activeTime": 60,
+    "entireTime": 75,
+    "servings": 4,
+    "diet": "vegetarian",
+    "ingredients": [
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "All-purpose flour",
+        "amount": 500
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Kosher salt",
+        "amount": 10
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Whole milk",
+        "amount": 100
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Eggs",
+        "amount": 66
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Sour cream",
+        "amount": 25
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Russet potatoes",
+        "amount": 400
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Butter",
+        "amount": 50
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Onions",
+        "amount": 50
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Ingredient",
+        "name": "Cream cheese",
+        "amount": 200
+      }
+    ],
+    "preparation": [
+      "In the bowl of a stand mixer fitted with a dough hook, blend together the flour and salt on low speed.",
+      "Whisk together the milk, egg and sour cream. Slowly add the milk mixture to the flour in a steady stream.",
+      "Continue to blend the flour mixture together until a shaggy dough forms and the dough starts to pull away from the sides of the bowl. Cover the dough with plastic wrap and allow to rest for 1 hour.",
+      "Cook the potatoes until fork tender, melt the butter over medium heat and caramelize the onions.",
+      "Mash the potatoes with a potato masher and add the cream cheese. Then season wit pepper and salt.",
+      "Roll out the dough to approximately 5mm thick and cut out rounds with a 10cm cutter.",
+      "Place 2 tablespoons of filling in the center of the dough rounds and fold the top half down ovr the filling, gently pressing to squeeze out any air. Seal by pinching the seam together.",
+      "In a large pot of salted, boiling water, cook the dumplings until they rise to the surface, about 4 minutes."
+    ],
+    "equipment": [
+      "stand mixer",
+      "non-stick pan",
+      "large pot",
+      "rolling pin"
+    ],
+    "tips": [
+      "1",
+      "2",
+      "3"
+    ],
+    "ratings": [
+      {
+        "_class": "ch.fhnw.webeC.model.Rating",
+        "title": "Rating",
+        "text": "Super",
+        "ratingNumber": 5,
+        "reviewer": {
+          "username": "asd",
+          "password": "555"
+        },
+        "reviewDate": "2020-04-12"
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Rating",
+        "title": "Rating",
+        "text": "Amazing!",
+        "ratingNumber": 5,
+        "reviewer": {
+          "username": "dsa",
+          "password": "444"
+        },
+        "reviewDate": "2020-11-19"
+      }
+    ],
+    "comments": [
+      {
+        "_class": "ch.fhnw.webeC.model.Comment",
+        "text": "Awesome!!!",
+        "commenter": {
+          "username": "Herbert",
+          "password": "b"
+        },
+        "commentDate": "2021-03-21"
+      },
+      {
+        "_class": "ch.fhnw.webeC.model.Comment",
+        "text": "Turned out delicious but took me way more than 75minutes!",
+        "commenter": {
+          "username": "Angela",
+          "password": "t"
+        },
+        "commentDate": "2021-03-22"
+      }
+    ]
+  }
+]

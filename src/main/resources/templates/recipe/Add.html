@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/page::html(~{::title},~{::main})">
+<title>Recipe</title>
+<main>
+    <h2 class="siteTitle">New recipe</h2>
+    <div class="card addForm">
+        <div class="card-body p-5">
+            <form id="addForm" th:action="@{/recipe/add}" th:object="${recipeData}" method="post">
+                <div class="container g-0">
+                    <div class="row mb-3" th:if="${#fields.hasErrors('*')}">
+                        <div class="col-sm-12">
+                            <div class="alert alert-danger">
+                                <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table">
+                                <tr>
+                                    <th>Title</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input class="form-control form-control-lg" th:value="*{title}"
+                                               type="text"
+                                               name="Title"
+                                               id="recipeTitle"
+                                               placeholder="Title"
+                                               maxlength="100"
+                                               pattern=".*\S.*"
+                                               title="Title"
+                                               required>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table">
+                                <tr>
+                                    <th>Header image</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <img src=""
+                                                     th:src="${(recipeData.image != null && recipeData.image != '') ? recipeData.image : '/uploads/default.jpg'}"
+                                                     class="card-img-top"
+                                                     id="imgHeader"
+                                                     th:alt="*{title}"
+                                                     alt="">
+                                            </div>
+
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-12 col-md-10">
+                                                <input type="hidden" th:field="*{image}" id="imgField">
+                                                <input id="imgUpload"
+                                                       class="form-control"
+                                                       type="file">
+                                                <div class="invalid-feedback">
+                                                    Please select a file to upload.
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-2 mt-2 mt-md-0">
+                                                <button id="btnUpload" class="btn btn-outline-primary form-control">
+                                                    Upload
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table">
+                                <tr>
+                                    <th>Short description</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea class="form-control" th:field="*{shortDescription}"
+                                                  placeholder="Add a short description of your recipe"
+                                                  rows="3"
+                                                  maxlength="255"
+                                                  title="Description" required></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-6">
+                            <table class="table">
+                                <tr>
+                                    <th colspan="2">Overview</th>
+                                </tr>
+                                <tr>
+                                    <td>Entire time</td>
+                                    <td>
+                                        <input class="form-control" th:field="*{entireTime}" type="number"
+                                               name="entireTime" id="entireTime" min="5" max="1000"
+                                               placeholder="Minutes"
+                                               title="Entire time" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Active time</td>
+                                    <td>
+                                        <input class="form-control" th:field="*{activeTime}" type="number"
+                                               name="activeTime" id="activeTime" min="1" max="1000"
+                                               placeholder="Minutes"
+                                               title="Active time" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Servings</td>
+                                    <td>
+                                        <input class="form-control" th:field="*{servings}" type="number"
+                                               name="servings" id="servings" min="1" max="8"
+                                               placeholder="No. of ppl."
+                                               title="Servings" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Diet</td>
+                                    <td class="form-group">
+                                        <select class="form-control" th:field="*{diet}">
+                                            <option value="no diet">no diet</option>
+                                            <option value="vegan">vegan</option>
+                                            <option value="vegetarian">vegetarian</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6">
+                            <table class="table">
+                                <tr>
+                                    <th colspan="2">Equipment</th>
+                                    <th>
+                                        <div class="d-flex justify-content-end">
+                                            <input class="btn btn-primary btn-sm" type="submit"
+                                                   name="addEquipment"
+                                                   value="Add"/>
+                                        </div>
+
+                                    </th>
+                                </tr>
+                                <tr th:each="step, itemStat : *{equipment}">
+                                    <td th:text="${itemStat.count}+'.'">
+                                    <td>
+                                        <input class="form-control"
+                                               th:field="*{equipment[__${itemStat.index}__]}"
+                                               type="text"
+                                               maxlength="20"
+                                               placeholder="Add equipment"
+                                               title="equipmentInput" required>
+                                    </td>
+                                    <td class="px-0">
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-outline-primary btn-sm" type="submit"
+                                                    name="removeEquipment" th:value="${itemStat.index}">
+                                                X
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table">
+                                <tr>
+                                    <th colspan="4">Ingredients</th>
+                                    <th>
+                                        <div class="d-flex justify-content-end">
+                                            <input class="btn btn-primary btn-sm" type="submit"
+                                                   name="addIngredient"
+                                                   value="Add"/>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr th:each="ingredient, itemStat : *{ingredients}">
+                                    <td>Name</td>
+                                    <td>
+                                        <input class="form-control"
+                                               th:field="*{ingredients[__${itemStat.index}__].name}"
+                                               type="text"
+                                               maxlength="20"
+                                               placeholder="Add ingredient"
+                                               title="ingredientInput" required>
+                                    </td>
+                                    <td>Amount</td>
+                                    <td>
+                                        <input class="form-control"
+                                               th:field="*{ingredients[__${itemStat.index}__].amount}"
+                                               type="number"
+                                               min="1"
+                                               max="10000"
+                                               placeholder="grams"
+                                               title="amountInput" required>
+                                    </td>
+                                    <td class="px-0">
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-outline-primary btn-sm" type="submit"
+                                                    name="removeIngredient"
+                                                    th:value="${itemStat.index}">
+                                                X
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table">
+                                <tr>
+                                    <th colspan="2">Preparation</th>
+                                    <th>
+                                        <div class="d-flex justify-content-end">
+                                            <input class="btn btn-primary btn-sm" type="submit"
+                                                   name="addPreparation"
+                                                   value="Add"/>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr th:each="step, itemStat : *{preparation}">
+                                    <td th:text="${itemStat.count}+'.'">
+                                    <td>
+                                            <textarea class="form-control"
+                                                      th:field="*{preparation[__${itemStat.index}__]}"
+                                                      placeholder="Describe step"
+                                                      rows="3"
+                                                      maxlength="255"
+                                                      title="preparationStep"
+                                                      required></textarea>
+                                    </td>
+                                    <td class="px-0">
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-outline-primary btn-sm" type="submit"
+                                                    name="removePreparation"
+                                                    th:value="${itemStat.index}">
+                                                X
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-end">
+                                <input class="btn btn-primary" type="submit" id="createRecipeButton" value="Create">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</html>

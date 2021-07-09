@@ -1,0 +1,14 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="Card(title, content, image, url)">
+    <div class="card">
+        <a th:href="${url}">
+            <img src="" th:src="'/images/' + ${image != null ? image : 'default.jpg'}" class="card-img-top"
+                 th:alt="${title}" alt="">
+            <div class="card-body">
+                <h5 th:text="${title}" class="card-title">placeholderTitle</h5>
+                <p th:text="${content}" class="card-text line-clamp-long">placeholderText</p>
+            </div>
+        </a>
+    </div>
+</div>
+</html>

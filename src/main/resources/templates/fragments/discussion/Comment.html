@@ -1,0 +1,12 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="col-12" th:fragment="comment(username, text, date)">
+    <div class="card">
+        <div class="card-body p-4 commentCard">
+            <h5 th:text="${username}" class="username"></h5>
+            <p th:text="${text}" class="card-text"></p>
+            <p th:text="${date}" class="card-text"></p>
+        </div>
+    </div>
+</div>
+</html>
+

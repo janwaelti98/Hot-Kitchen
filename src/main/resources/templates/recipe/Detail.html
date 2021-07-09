@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="fragments/page::html(~{::title},~{::main})">
+<title>Recipe</title>
+<main>
+    <div th:if="${recipe != null}">
+        <div class="row g-2">
+            <div class="col-sm-12 col-xl-8 mb-5">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="siteTitle">Recipe</h2>
+                            <div class="card">
+                                <img src=""
+                                     th:src="${recipe.getImage() != null ? recipe.getImage() : '/uploads/default.jpg'}"
+                                     class="card-img-top" th:alt="${recipe.title}" alt="">
+                                <div class="card-body p-5">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <h3 th:text="${recipe.title}"
+                                                class="card-title">
+                                                placeholderTitle
+                                            </h3>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="row text-start text-md-end mb-3">
+                                                <div class="col-6 col-md-12">
+                                                    <div sec:authorize="isFullyAuthenticated()"
+                                                         th:replace="fragments/Rating::giveRating(${recipe.id})">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-12">
+                                                    <div th:replace="fragments/Rating::ratingAverage('Overall rating: ', ${recipe.getAverageRating()})"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p th:text="${recipe.getShortDescription()}"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-6">
+                                            <table class="table">
+                                                <tr>
+                                                    <th colspan="2">Overview</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Entire time</td>
+                                                    <td th:text="${recipe.getEntireTime()}+' min'">50 min</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Active time</td>
+                                                    <td th:text="${recipe.getActiveTime()}+' min'">35 min</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Servings</td>
+                                                    <td th:text="${recipe.getServings()+' pers.'}">4 pers.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Diet</td>
+                                                    <td th:text="${recipe.getDiet()}">vegetarian</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Equipment</td>
+                                                    <td>
+                                                        <div th:each="elem, custStat : ${recipe.getEquipment()}">
+                                                            <span th:text="${elem}"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6">
+                                            <table class="table">
+                                                <tr>
+                                                    <th colspan="2">Ingredients</th>
+                                                </tr>
+                                                <tr th:each="elem, custStat : ${recipe.getIngredients()}">
+                                                    <td th:text="${elem.getName()}"></td>
+                                                    <td th:text="${elem.getAmount()} + 'g'"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th colspan="2">Preparation</th>
+                                                </tr>
+                                                <tr th:each="elem, custStat : ${recipe.getPreparation()}">
+                                                    <td th:text="${custStat.count}+'.'">1.</td>
+                                                    <td th:text="${elem}"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4" sec:authorize="hasAnyAuthority('AUTHOR', 'ADMIN')">
+                                        <div class="col-sm-9"></div>
+                                        <div class="col-sm-3 d-grid gap-2 d-flex justify-content-end">
+                                            <a th:href="@{'/recipe/' + ${recipe.id} + '/edit'}" id="recipeEditButton"
+                                               class="btn btn-primary">Edit</a>
+                                            <form th:action="@{'/recipe/' + ${recipe.id} + '/delete'}" method="post">
+                                                <button type="submit" id="recipeDeleteButton"
+                                                        class="btn btn-outline-primary">Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-4 mb-5">
+
+                <div class="container-fluid">
+                    <h2 class="siteTitle">Comments</h2>
+                    <div class="row mb-2 g-0" th:each="comment : ${comments}">
+                        <div th:replace="fragments/discussion/Comment::comment(${comment.getCommenter().getUsername()}, ${comment.getText()}, ${comment.commentDateToString(comment.getCommentDate())})"></div>
+                    </div>
+                    <div class="row mb-2 g-0" th:if="${comments.isEmpty()}">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body p-4">
+                                    <p>No comments on this recipe yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" sec:authorize="isFullyAuthenticated()">
+                        <form th:action="@{'/recipe/' + ${recipe.id} + '/addComment'}" method="post">
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                        <textarea class="form-control"
+                                                  placeholder="Your comment"
+                                                  name="commentText"
+                                                  id="commentText"
+                                                  rows="4"
+                                                  required></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-10"></div>
+                                <div class="col-sm-2 d-flex justify-content-end">
+                                    <input class="btn btn-primary mr-0" type="submit" id="btnComment" value="Comment">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="row" sec:authorize="!isFullyAuthenticated()">
+                        <div>
+                            <a th:href="@{/login}">Log in</a> or <a th:href="@{/register}">register</a> to
+                            participate in discussions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</html>

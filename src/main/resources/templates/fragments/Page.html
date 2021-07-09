@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title,content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <title th:replace="${title}">Title</title>
+</head>
+<body>
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-brand" href="/" th:class="${#request.servletPath == '/' ? 'active' : ''}">Hot
+                    Kitchen</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/news"
+                           th:class="${#request.servletPath == '/news' ? 'active' : ''}">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recipe"
+                           th:class="${#request.servletPath == '/recipe' ? 'active' : ''}">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about"
+                           th:class="${#request.servletPath == '/about' ? 'active' : ''}">About</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expr('!isAuthenticated()')}">
+                        <a class="nav-link" href="/register"
+                           th:class="${#request.servletPath == '/register' ? 'active' : ''}">Register</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expr('!isAuthenticated()')}">
+                        <a class="nav-link" href="/login"
+                           th:class="${#request.servletPath == '/login' ? 'active' : ''}">Login</a>
+                    </li>
+                </ul>
+                <form class="d-grid" th:if="${#authorization.expr('isAuthenticated()')}" th:action="@{/logout}"
+                      method="post">
+                    <input class="btn btn-primary" type="submit" value="Log out">
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container main">
+    <div class="row">
+        <div class="col-12">
+            <main th:replace="${content}"></main>
+        </div>
+    </div>
+    <!-- Back to top button -->
+    <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+        <i data-feather="arrow-up" stroke-width="2"></i>
+    </button>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-5">
+                <i>First, solve the problem.<br />Then, write the code.<br />Finally make cookies!</i>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

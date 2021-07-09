@@ -1,0 +1,28 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="recipeThumbnail(recipe, recipeId, recipeTitle, recipeContent)">
+    <a th:href="'/recipe/'+${recipeId}">
+        <div class="card">
+            <img src="" th:src="${recipe.getImage() != null ? recipe.getImage() : '/uploads/default.jpg'}"
+                 class="card-img-top" th:alt="${recipeTitle}" alt="">
+            <div class="card-body">
+                <h5 th:text="${recipeTitle}" class="card-title">placeholderTitle</h5>
+                <p th:text="${recipeContent}" class="card-text line-clamp">placeholderText</p>
+                <div>
+                    <table class="cardTable table d-flex justify-content-center">
+                        <tr>
+                            <th>Total time</th>
+                            <th>Diet</th>
+                            <th>Rating</th>
+                        </tr>
+                        <tr>
+                            <td th:text="${recipe.getEntireTime()} +' min'"></td>
+                            <td th:text="${recipe.getDiet()}"></td>
+                            <td th:text="${recipe.getAverageRating() == -1 ? 'no ratings yet' : recipe.getAverageRating()}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+</html>

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap-star-rating": "^4.0.9",
+    "jquery": "^3.6.0"
+  }
+}
