@@ -1,10 +1,10 @@
 # webeC HotKitchen Project
-This is a web engineering project that has been created by Daniel Nüsssli, Alison Fersch and Jan Wälti as part of the
+This is a web engineering project that has been created by Alison Fersch, Daniel Nüssli and Jan Wälti as part of the
 webeC module.
 
-* **Daniel Nüssli** - daniel.nuessli@students.fhnw.ch
-
 * **Alison Fersch** - alison.fersch@students.fhnw.ch
+
+* * **Daniel Nüssli** - daniel.nuessli@students.fhnw.ch
   
 * **Jan Wälti** - jan.waelti@students.fhnw.ch
 
