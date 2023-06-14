@@ -4,7 +4,7 @@ webeC module.
 
 * **Alison Fersch** - alison.fersch@students.fhnw.ch
 
-* * **Daniel Nüssli** - daniel.nuessli@students.fhnw.ch
+*  **Daniel Nüssli** - daniel.nuessli@students.fhnw.ch
   
 * **Jan Wälti** - jan.waelti@students.fhnw.ch
 
